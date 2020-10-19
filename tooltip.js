@@ -3,7 +3,10 @@ class Tooltip extends HTMLElement {
     super();
     this._tooltipContainer = document.createElement("div");
     this._tooltipContainer.textContent = "this is the default text";
-    this.appendStyles()
+    this.appendStyles();
+    this.attachShadow({ mode: 'open' });
+    const template = document.getElementById("tool-tip-template");
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
   appendStyles() {
@@ -24,21 +27,19 @@ class Tooltip extends HTMLElement {
       const text = this.getAttribute('text')
       this._tooltipContainer.textContent = text;
     }
-    
-    const span = document.createElement("span");
-    span.textContent = " (?)";
-    span.addEventListener("mouseenter", this._showTooltip.bind(this));
-    span.addEventListener("mouseleave", this._hideTooltip.bind(this));
-    this.appendChild(span);
+    const tooltipIcon = this.shadowRoot.querySelector('span')
+    tooltipIcon.addEventListener("mouseenter", this._showTooltip.bind(this));
+    tooltipIcon.addEventListener("mouseleave", this._hideTooltip.bind(this));
+    this.shadowRoot.appendChild(tooltipIcon);
     this.style.position = "relative"
   }
 
   _showTooltip() {
-    this.appendChild(this._tooltipContainer);
+    this.shadowRoot.appendChild(this._tooltipContainer);
   }
 
   _hideTooltip() {
-    this.removeChild(this._tooltipContainer);
+    this.shadowRoot.removeChild(this._tooltipContainer);
   }
 }
 

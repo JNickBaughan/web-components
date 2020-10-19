@@ -7,8 +7,14 @@
     <script src="./tooltip.js"></script>
   </head>
   <body>
+    <template id="tool-tip-template">
+      <slot>DEFAULT SLOT VALUE</slot>
+      <span> (?)</span>
+    </template>
     <p>this is a <tool-tip text="this is the text for tool tip">test</tool-tip></p>
 
-    <p>this has no text <tool-tip ></tool-tip>test</tool-tip></p>
+    <p>this has no tool tip text <tool-tip >test</tool-tip></p>
+
+    <p>this has no tool tip text or slot value <tool-tip ></tool-tip></p>
   </body>
 </html>
