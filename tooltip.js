@@ -3,23 +3,23 @@ class Tooltip extends HTMLElement {
     super();
     this._tooltipContainer = document.createElement("div");
     this._tooltipContainer.textContent = "this is the default text";
-    this.appendStyles();
     this.attachShadow({ mode: 'open' });
-    const template = document.getElementById("tool-tip-template");
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
-  }
-
-  appendStyles() {
-    this._tooltipContainer.style.backgroundColor = "black";
-    this._tooltipContainer.style.border = "1px solid white";
-    this._tooltipContainer.style.color = "white";
-    this._tooltipContainer.style.position = "absolute";
-    this._tooltipContainer.style.top = "-20px";
-    this._tooltipContainer.style.left = "20px";
-    this._tooltipContainer.style.minWidth = "200px";
-    this._tooltipContainer.style.padding = "5px";
-    this._tooltipContainer.style.margin = "2px";
-    this._tooltipContainer.style.zIndex = "10";
+    this.shadowRoot.innerHTML = `<style>
+                                  div { 
+                                    background-color: black;
+                                    color: white;
+                                    border: 1px solid white;
+                                    position: absolute;
+                                    top: -20px;
+                                    left: 20px;
+                                    min-width: 200px;
+                                    padding: 5px;
+                                    margin: 2px;
+                                    z-index: 10;
+                                  }
+                                 </style>
+                                 <slot>DEFAULT SLOT VALUE</slot>
+                                 <span> (?)</span>`
   }
 
   connectedCallback() {
