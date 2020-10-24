@@ -17,6 +17,10 @@ class Tooltip extends HTMLElement {
                                     margin: 2px;
                                     z-index: 10;
                                   }
+
+                                  ::slotted(span){
+                                    border: 3px red solid;
+                                  }
                                  </style>
                                  <slot>DEFAULT SLOT VALUE</slot>
                                  <span> (?)</span>`
