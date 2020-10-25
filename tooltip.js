@@ -29,6 +29,10 @@ class Tooltip extends HTMLElement {
                                   ::slotted(span){
                                     border: 3px red solid;
                                   }
+
+                                  :host {
+                                    background: #ccc;
+                                  }
                                  </style>
                                  <slot>DEFAULT SLOT VALUE</slot>
                                  <span class="icon"> ? </span>`
