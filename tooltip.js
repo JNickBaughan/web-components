@@ -10,7 +10,7 @@ class Tooltip extends HTMLElement {
                                     color: white;
                                     border: 1px solid white;
                                     position: absolute;
-                                    top: -20px;
+                                    top: -40px;
                                     left: 20px;
                                     min-width: 200px;
                                     padding: 5px;
@@ -18,12 +18,20 @@ class Tooltip extends HTMLElement {
                                     z-index: 10;
                                   }
 
+                                  .icon {
+                                    background-color: black;
+                                    color: white;
+                                    border-radius: 50%;
+                                    padding: .15rem .5rem;
+                                    text-align: center;
+                                  }
+
                                   ::slotted(span){
                                     border: 3px red solid;
                                   }
                                  </style>
                                  <slot>DEFAULT SLOT VALUE</slot>
-                                 <span> (?)</span>`
+                                 <span class="icon"> ? </span>`
   }
 
   connectedCallback() {
