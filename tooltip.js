@@ -33,6 +33,12 @@ class Tooltip extends HTMLElement {
                                   :host {
                                     background: #ccc;
                                   }
+
+                                  :host(.important) {
+                                    background: orange;
+                                  }
+
+
                                  </style>
                                  <slot>DEFAULT SLOT VALUE</slot>
                                  <span class="icon"> ? </span>`
