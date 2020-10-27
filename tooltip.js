@@ -39,7 +39,7 @@ class Tooltip extends HTMLElement {
                                   }
 
                                   :host(.important) {
-                                    background: orange;
+                                    background: var(--important-color)
                                   }
 
 
